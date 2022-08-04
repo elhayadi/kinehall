@@ -1,0 +1,6 @@
+.svn
+composer.lock
+vendor
+tests/SimpleThings/Tests/EntityAudit/cache
+tests/SimpleThings/Tests/EntityAudit/Proxies
+.php_cs.cache
