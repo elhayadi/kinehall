@@ -17,7 +17,7 @@
       <trans-unit id="ac829dba1f97945e59fd87f2618384bfe8516497" resname="home.header.title">
         <source>home.header.title</source>
         <target><![CDATA[
-                <span class="thin-text">Bienvenue sur la démo de </span> <span class="text"> </span> Cocorico Enterprise Edition.]]></target>
+                <span class="thin-text">Bienvenue sur la démo de </span> <span class="text"> </span> KineHall Enterprise Edition.]]></target>
       </trans-unit>
       <trans-unit id="3af93b9b8cfe074ceff3fff27255261635f40424" resname="home.subinfo.desc1">
         <source>home.subinfo.desc1</source>
