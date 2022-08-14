@@ -8,6 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace Cocorico\CoreBundle\Form\Handler\Frontend;
 
 use Cocorico\CoreBundle\Entity\Booking;
@@ -49,7 +50,6 @@ class ListingFormHandler
         }
         $this->request = $requestStack->getCurrentRequest();
         $this->listingManager = $listingManager;
-
     }
 
 
@@ -148,4 +148,14 @@ class ListingFormHandler
         return $listing;
     }
 
+    /**
+     * Add selected categories and corresponding fields values from post parameters while listing deposit
+     * 
+     */
+    public function getCategories()
+    {
+        $categories = $this->listingManager->getCategories();
+
+        return $categories;
+    }
 }

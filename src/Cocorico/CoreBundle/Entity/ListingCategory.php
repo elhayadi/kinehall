@@ -117,7 +117,6 @@ class ListingCategory extends BaseListingCategory
     public function addChild(ListingCategory $children)
     {
         $this->children[] = $children;
-
         return $this;
     }
 

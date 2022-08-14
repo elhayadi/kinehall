@@ -291,7 +291,7 @@ class ListingSearchController extends Controller
     protected function createSearchForm(ListingSearchRequest $listingSearchRequest)
     {
         $form = $this->get('form.factory')->createNamed(
-            '',
+            'listing_categories',
             ListingSearchType::class,
             $listingSearchRequest,
             array(

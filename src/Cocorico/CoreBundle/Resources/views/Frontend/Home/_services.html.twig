@@ -1,0 +1,41 @@
+<section class="services-area col-md-12 tips-section">
+	<div class="services-holder row">
+		<div class="section-header">
+			<h2 class="title">Categories
+				<strong>&</strong>
+				Specialites</h2>
+			<p class="subtitle">
+				Usu habeo equidem sanctus no. Suas summo id sed, erat erant oporteat cu pri. In eum omnes molestie.
+																																												Sed ad debet scaevola, ne mel.
+			</p>
+		</div>
+		<!-- post -->
+		<div class="slider-categories">
+			<div class="slider-clip">
+				<ul class="slides">
+					{%- for categoryTmp in categories -%}
+						{% set category = categoryTmp %}
+						{% if category.parent is null %}
+							{% set category_translation = category.translations[app.request.locale] %}
+
+							<article class="categorie-thumbnail col-sm-2 col-xs-12">
+								<img src="{{ asset('images/service.svg') }}"/>
+								<div>
+									{{category}}
+								</div>
+							</article>
+						{% endif %}
+					{%- endfor -%}
+				</ul>
+			</div>
+			{# slider-clip #}
+			<div class="slider-categories-actions">
+				<a href="#" class="slider-prev">Previous Slide</a>
+
+				<a href="#" class="slider-next">Next Slide</a>
+			</div>
+
+			<div class="slider-categories-paging"></div>
+		</div>
+	</div>
+</section>

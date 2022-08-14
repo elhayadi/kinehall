@@ -35,30 +35,25 @@ class HomeController extends Controller
             6,
             $request->getLocale()
         );
-
+        $categories = $this->get('cocorico.form.handler.listing')->getCategories();
         return $this->render(
             'CocoricoCoreBundle:Frontend\Home:index.html.twig',
             array(
                 'listings' => $listings->getIterator(),
+                'categories' => $categories,
             )
         );
     }
-
-
     /**
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function rssFeedsAction()
+    public function rssTestimonialsAction()
     {
-        $feed = $this->getParameter('cocorico.home_rss_feed');
-        if (!$feed) {
-            return new Response();
-        }
-
+        $feed = $this->getParameter('cocorico.home_rss_testimonials');
         $cacheTime = 3600 * 12;
         $cacheDir = $this->getParameter('kernel.cache_dir');
-        $cacheFile = $cacheDir . '/rss-home-feed.json';
+        $cacheFile = $cacheDir . '/rss-home-testimonial.json';
         $timeDif = @(time() - filemtime($cacheFile));
         $renderFeeds = array();
 
@@ -75,13 +70,15 @@ class HomeController extends Controller
             $content = @file_get_contents($feed, false, stream_context_create($options));
 
             $feeds = array();
-            if ($content) {
-                try {
-                    $feeds = new \SimpleXMLElement($content);
-                    $feeds = $feeds->channel->xpath('//item');
-                } catch (\Exception $e) {
-                    // silently fail error
-                }
+
+            try {
+                $feeds = new \SimpleXMLElement($content);
+                $feeds = $feeds->channel->xpath('//item');
+                var_dump($feed);
+                var_dump($content);
+            } catch (\Exception $e) {
+                // silently fail error
+                var_dump($e);
             }
 
             /**
@@ -89,15 +86,10 @@ class HomeController extends Controller
              * @var  \SimpleXMLElement $feed
              */
             foreach ($feeds as $key => $feed) {
-                $renderFeeds[$key]['title'] = (string)$feed->children()->title;
-                $renderFeeds[$key]['pubDate'] = (string)$feed->children()->pubDate;
-                $renderFeeds[$key]['link'] = (string)$feed->children()->link;
-                $description = $feed->children()->description;
-                $matches = [];
-                preg_match('/src="([^"]+)"/', $description, $matches);
-                if (count($matches)) {
-                    $renderFeeds[$key]['image'] = str_replace('http:', '', $matches[1]);
-                }
+                $renderFeeds[$key]['title'] = (string)$feed->children()->name;
+                $renderFeeds[$key]['link'] = (string)$feed->children()->audio;
+                $renderFeeds[$key]['image'] = (string)$feed->children()->avatar;
+                $description = $feed->children()->lorem;
             }
 
             @file_put_contents($cacheFile, json_encode($renderFeeds));
@@ -112,4 +104,59 @@ class HomeController extends Controller
         );
     }
 
+    /**
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function rssFeedsAction()
+    {
+        $feed = $this->getParameter('cocorico.home_rss_feed');
+        $cacheTime = 3600 * 12;
+        $cacheDir = $this->getParameter('kernel.cache_dir');
+        $cacheFile = $cacheDir . '/rss-home-feed.json';
+        $timeDif = @(time() - filemtime($cacheFile));
+        $renderFeeds = array();
+
+        if (file_exists($cacheFile) && $timeDif < $cacheTime) {
+            $renderFeeds = json_decode(@file_get_contents($cacheFile), true);
+        } else {
+            $options = array(
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $content = file_get_contents($feed, false, stream_context_create($options));
+
+            $feeds = array();
+            if ($content) {
+                try {
+                    $feeds = json_decode($content);
+                } catch (\Exception $e) {
+                    // silently fail error
+                }
+            }
+            var_dump($feeds);
+            /**
+             * @var                    $key
+             * @var  \SimpleXMLElement $feed
+             */
+            foreach ($feeds as $key => $feed) {
+                $renderFeeds[$key]['title'] = (string)$feed->children()->name;
+                $renderFeeds[$key]['link'] = (string)$feed->children()->audio;
+                $renderFeeds[$key]['image'] = (string)$feed->children()->avatar;
+                $description = $feed->children()->lorem;
+            }
+
+            @file_put_contents($cacheFile, json_encode($renderFeeds));
+        }
+
+
+        return $this->render(
+            'CocoricoCoreBundle:Frontend/Home:rss_feed.html.twig',
+            array(
+                'feeds' => $renderFeeds,
+            )
+        );
+    }
 }

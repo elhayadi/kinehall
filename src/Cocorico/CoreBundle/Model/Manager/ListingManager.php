@@ -171,12 +171,26 @@ class ListingManager extends BaseManager
                 $this->em->flush();
                 $this->em->refresh($listing);
             }
-
         } else {
             throw new AccessDeniedException();
         }
 
         return $listing;
+    }
+
+
+    /**
+     * Create categories and field values while listing deposit.
+     *
+     * 
+     * @return Paginator
+     */
+    public function getCategories()
+    {
+        $listingCategory = $this->em->getRepository('CocoricoCoreBundle:ListingCategory')->findAll();
+
+
+        return $listingCategory;
     }
 
     /**
@@ -334,5 +348,4 @@ class ListingManager extends BaseManager
     {
         return $this->em->getRepository('CocoricoCoreBundle:Listing');
     }
-
 }

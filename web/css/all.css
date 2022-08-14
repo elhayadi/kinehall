@@ -2290,7 +2290,8 @@ fieldset[disabled] .btn {
 
 .btn-default {
     color: #ffffff;
-    background-color: #EE685F;
+    background: rgb(66, 164, 247);
+    background: linear-gradient(265deg, rgba(66, 164, 247, 1) 0%, rgba(115, 187, 251, 1) 100%);
     border-color: transparent;
 }
 
@@ -4851,6 +4852,7 @@ input[type="button"].btn-block {
     font-style: normal;
 }
 
+
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*
@@ -5270,9 +5272,10 @@ span.btn:focus {
 
 /* header styles */
 #header {
-    margin: 0 0 20px;
-    padding: 0 0 21px;
-    border-bottom: #dfe3e6 solid 1px;
+    background: transparent;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
 }
 
 .home-page #header {
@@ -5292,10 +5295,10 @@ span.btn:focus {
 
 /* topbar */
 .topbar {
-    margin: 0 0 24px;
-    padding: 7px 0 8px;
-    background: #f7f7f7;
-    border-bottom: solid 1px #e6e6e6;
+    margin: 0 0 25px;
+    padding: 8px 0 7px;
+    background: #ffffff;
+    border-bottom: solid 1px #ffffff;
 }
 
 .topbar ul {
@@ -5360,11 +5363,13 @@ span.btn:focus {
 
 .navbar-default .navbar-collapse {
     float: right;
-    margin: 0 -21px 0 0;
+    display: flex !important;
+    margin: 0 -20px 0 0;
+    align-items: center;
 }
 
 .navbar-default .navbar-nav {
-    margin: 12px 0 0;
+    margin: 5px 0 0;
 }
 
 .navbar-default .navbar-nav>li {
@@ -5553,8 +5558,8 @@ span.btn:focus {
 
 /* form-category */
 .form-category {
-    position: relative;
-    display: inline-block;
+    position: absolute;
+    bottom: 0;
 }
 
 .form-category .area {
@@ -5563,11 +5568,10 @@ span.btn:focus {
     gap: 20px;
     background: #FFFFFF;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
-    border-radius: 15px 20px 20px 15px;
+    border-radius: 50px;
     padding: 0;
-    position: absolute;
     width: 100%;
-    margin-top: -45px;
+    margin-bottom: 150px;
 
 }
 
@@ -5577,7 +5581,7 @@ span.btn:focus {
     position: relative;
     color: #fff;
     text-transform: uppercase;
-    border-radius: 0 15px 15px 0;
+    border-radius: 0 50px 50px 0;
 }
 
 .form-category .col {
@@ -5585,7 +5589,7 @@ span.btn:focus {
     flex-direction: column;
     align-items: flex-start;
     padding: 15px;
-    padding-left: 20px;
+    padding-left: 30px;
 
 }
 
@@ -5998,10 +6002,29 @@ span.btn:focus {
 
 /* visual */
 .visual {
-    margin: 0 0 100px;
-    background: url(../images/bg-header.svg) no-repeat;
+    margin: 0 0 165px;
+    background: url(../../images/banner.svg) no-repeat;
     background-size: cover;
-    background-position-y: -20px;
+    height: 1100px;
+    position: relative;
+    background-position-x: center;
+    background-position-y: bottom;
+}
+
+.visual .shape-holder {
+    position: relative;
+}
+
+.shape-holder svg {
+    position: absolute;
+    right: 65px;
+    height: 65px;
+    top: 155px;
+}
+
+.shape-holder svg:hover {
+    transform: translateY(-30px);
+    transition: 1s transform;
 }
 
 .visual .title-holder {
@@ -6018,6 +6041,7 @@ span.btn:focus {
 
 .visual h1 {
     margin: 0 auto;
+    text-align: left;
     max-width: 670px;
     font: 700 48px/58px 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -6037,16 +6061,54 @@ span.btn:focus {
     padding-bottom: 22px;
 }
 
+.infoarea .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.section-header {
+    text-align: center;
+    padding: 0 10vw;
+    margin-bottom: 60px;
+}
+
+.section-header .title {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #42a4f7;
+}
+
+.section-header .subtitle {
+    font-size: 18px;
+    font-weight: light;
+}
+
 .infoarea .info-box {
-    padding-bottom: 20px;
+    background: url(../images/card.svg  ) no-repeat;
+    height: 500px;
+    display: flex;
+    padding: 42px 35px 0 70px;
+    flex-direction: column;
+    background-size: contain;
+}
+
+.infoarea .info-box:hover {
+    background: url(../images/card-hover.svg  ) no-repeat;
+    padding: 20px 35px 0 75px;
 }
 
 .infoarea .icon {
-    margin: 0 22px 0 0;
+    width: 50px;
 }
 
-.infoarea .textbox {
-    overflow: hidden;
+.info-box .textbox h2 {
+    padding: 20px 95px 0 15px;
+}
+
+.info-box .textbox p {
+    padding: 5px 20px 0 15px;
 }
 
 .infoarea h2 {
@@ -6240,6 +6302,10 @@ span.btn:focus {
     right: 0;
     bottom: 0;
     position: absolute;
+}
+
+.services-area {
+    margin: 60px 0;
 }
 
 /* listing-area */
