@@ -21,7 +21,14 @@
 				</div>
 				<div class="col-xs-6 col-lg-6 ">
 					<div class="shape-holder">
-						{% include 'CocoricoCoreBundle:Frontend/Home:assets/circle.svg.twig'%}
+						
+						<div class="shape">
+							{% include 'CocoricoCoreBundle:Frontend/Home:assets/header-shape.svg.twig'%}
+						</div>
+						<div class="doctor">
+							{% include 'CocoricoCoreBundle:Frontend/Home:assets/header-doctor.svg.twig'%}
+						</div>
+
 					</div>
 				</div>
 				{{ render(controller('CocoricoCoreBundle:Frontend/ListingSearch:searchHomeForm')) }}
@@ -31,74 +38,82 @@
 {% endblock %}
 
 {% block main %}
-	<!-- infoarea -->
-	<div class="infoarea container">
-		<div class="section-header">
-			<h2 class="title">DÉCOUVREZ LE
-				<strong>RENDEZ-VOUS</strong>
-				EN LIGNE !</h2>
-			<p class="subtitle">
-				Usu habeo equidem sanctus no. Suas summo id sed, erat erant oporteat cu pri. In eum omnes molestie.
-																				Sed ad debet scaevola, ne mel.
-			</p>
-		</div>
-
+	<div class="container">
 		<div
-			class="grid">
-			<!-- info-box -->
-			<div class=" info-box">
-				<img src="{{ asset('images/icon1.png') }}" alt="icon description" class="icon">
-
-				<div class="textbox">
-					<h2>
-						<a href="#">{{ 'home.subinfo.title1'|trans|raw }}</a>
-					</h2>
-
-					<p>
-						{{ 'home.subinfo.desc1'|trans|raw }}
+			class="row">
+			<!-- infoarea -->
+			<div class="infoarea">
+				<div class="section-header">
+					<h2 class="title">DÉCOUVREZ LE
+						<strong>RENDEZ-VOUS</strong>
+						EN LIGNE !</h2>
+					<p class="subtitle">
+						Usu habeo equidem sanctus no. Suas summo id sed, erat erant oporteat cu pri. In eum omnes molestie.
+																																																Sed ad debet scaevola, ne mel.
 					</p>
 				</div>
-			</div>
-			<!-- info-box -->
-			<div class=" info-box">
-				<img src="{{ asset('images/icon2.png') }}" alt="icon description" class="icon">
 
-				<div class="textbox">
-					<h2>
-						<a href="#">{{ 'home.subinfo.title2'|trans|raw }}</a>
-					</h2>
+				<div
+					class="grid">
+					<!-- info-box -->
+					<div class=" info-box">
+						<img src="{{ asset('images/icon1.png') }}" alt="icon description" class="icon">
 
-					<p>
-						{{ 'home.subinfo.desc2'|trans|raw }}
-					</p>
+						<div class="textbox">
+							<h2>
+								<a href="#">{{ 'home.subinfo.title1'|trans|raw }}</a>
+							</h2>
+
+							<p>
+								{{ 'home.subinfo.desc1'|trans|raw }}
+							</p>
+						</div>
+					</div>
+					<!-- info-box -->
+					<div class=" info-box">
+						<img src="{{ asset('images/icon2.png') }}" alt="icon description" class="icon">
+
+						<div class="textbox">
+							<h2>
+								<a href="#">{{ 'home.subinfo.title2'|trans|raw }}</a>
+							</h2>
+
+							<p>
+								{{ 'home.subinfo.desc2'|trans|raw }}
+							</p>
+						</div>
+					</div>
+					<!-- info-box -->
+					<div class=" info-box">
+						<img src="{{ asset('images/icon3.png') }}" alt="icon description" class="icon">
+
+						<div class="textbox">
+							<h2>
+								<a href="#">{{ 'home.subinfo.title3'|trans|raw }}</a>
+							</h2>
+
+							<p>
+								{{ 'home.subinfo.desc3'|trans|raw }}
+							</p>
+						</div>
+					</div>
 				</div>
 			</div>
-			<!-- info-box -->
-			<div class=" info-box">
-				<img src="{{ asset('images/icon3.png') }}" alt="icon description" class="icon">
-
-				<div class="textbox">
-					<h2>
-						<a href="#">{{ 'home.subinfo.title3'|trans|raw }}</a>
-					</h2>
-
-					<p>
-						{{ 'home.subinfo.desc3'|trans|raw }}
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	{% include 'CocoricoCoreBundle:Frontend/Home:_services.html.twig'  with {
+			{% include 'CocoricoCoreBundle:Frontend/Home:_services.html.twig'  with {
             'categories': categories
             } only %}
+		</div>
+	</div>
 	{{ render(controller('CocoricoCoreBundle:Frontend/Home:rssTestimonials')) }}
-	{% include 'CocoricoCoreBundle:Frontend/Home:_high_rank.html.twig'  with {
+	<div class="container">
+		<div class="row">
+			{% include 'CocoricoCoreBundle:Frontend/Home:_high_rank.html.twig'  with {
             'listings': listings
             } only %}
 
-	{{ render(controller('CocoricoCoreBundle:Frontend/Home:rssFeeds')) }}
-
+			{{ render(controller('CocoricoCoreBundle:Frontend/Home:rssFeeds')) }}
+		</div>
+	</div>
 {% endblock %}
 
 {% block modal %}

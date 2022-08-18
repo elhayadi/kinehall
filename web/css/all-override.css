@@ -2349,11 +2349,21 @@ ul.collection {
     margin-top: 20px;
 }
 
-.high-rank-title,
 .section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    text-transform: uppercase;
+    text-align: left;
+    margin: 0 0 50px 0;
+    text-transform: capitalize;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 10%;
+    bottom: -2px;
+    left: 1px;
+    position: absolute;
+    background: #000;
+    height: 2px;
 }
 
 .infoarea {
@@ -2425,14 +2435,17 @@ ul.collection {
 }
 
 .slider-secondary .slider-secondary-paging,
-.slider-categories .slider-categories-paging {
+.slider-categories .slider-categories-paging,
+.testimonial-slider .slider-testimonials-paging {
     padding-top: 30px;
     font-size: 0;
     line-height: 0;
     text-align: center;
 }
 
-.slider-secondary .slider-secondary-paging a {
+.slider-secondary .slider-secondary-paging a,
+.slider-categories .slider-categories-paging a,
+.testimonial-slider .slider-testimonials-paging a {
     display: inline-block;
     vertical-align: middle;
     margin: 0 10px;
@@ -2442,24 +2455,30 @@ ul.collection {
     background-color: #fff;
 }
 
-.slider-secondary .slider-secondary-paging a.selected {
+.slider-secondary .slider-secondary-paging a.selected,
+.slider-categories .slider-categories-paging a.selected,
+.testimonial-slider .slider-testimonials-paging a.selected {
     width: 39px;
 }
 
 .tips-section .slides,
 .testimonial-slider .slides {
-    padding: 5px 0;
+    padding: 30px 0;
 }
 
 .tips-section .listing-post .frame {
     min-height: 327px;
 }
 
-.slider-secondary .slider-secondary-paging a {
+.slider-secondary .slider-secondary-paging a,
+.slider-categories .slider-categories-paging a,
+.testimonial-slider .slider-testimonials-paging a {
     border: 1px solid #58595b;
 }
 
-.slider-secondary .slider-secondary-paging {
+.slider-secondary .slider-secondary-paging,
+.slider-categories .slider-categories-paging,
+.testimonial-slider .slider-testimonials-paging {
     padding-bottom: 30px;
 }
 
@@ -2831,16 +2850,7 @@ ul.collection {
 /* ------------------------------------------------------------ *\
 	Feeds
 \* ------------------------------------------------------------ */
-.section-feeds {
-    padding-bottom: 80px;
-    float: left;
-    clear: both;
-}
 
-.section-feeds .section-head {
-    margin-bottom: 30px;
-    text-align: center;
-}
 
 .feed-items {
     margin-right: -20px;
@@ -3215,10 +3225,8 @@ h1[data-id="result-title"] {
 
 .tips-section .home-comment-counter {
     float: left;
-    margin-left: 10px;
-    line-height: 40px;
-    font-size: 16px;
-    text-shadow: -1px 0 #999, 0 1px #999, 1px 0 #999, 0 -1px #999;
+    margin: 14px 5px;
+    font-size: 10px;
 }
 
 @media screen and (max-width: 1230px) {

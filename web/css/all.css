@@ -6005,7 +6005,7 @@ span.btn:focus {
     margin: 0 0 165px;
     background: url(../../images/banner.svg) no-repeat;
     background-size: cover;
-    height: 1100px;
+    height: 850px;
     position: relative;
     background-position-x: center;
     background-position-y: bottom;
@@ -6015,16 +6015,15 @@ span.btn:focus {
     position: relative;
 }
 
-.shape-holder svg {
-    position: absolute;
-    right: 65px;
-    height: 65px;
-    top: 155px;
+.shape-holder .shape {
+    margin-top: 135px;
 }
 
-.shape-holder svg:hover {
-    transform: translateY(-30px);
-    transition: 1s transform;
+.shape-holder .doctor {
+    position: absolute;
+    bottom: -215px;
+    left: -90px;
+    width: 110%;
 }
 
 .visual .title-holder {
@@ -6217,6 +6216,59 @@ span.btn:focus {
     margin: 0 11px 0 0;
 }
 
+.section-testimonials {
+    background: url(../../images/bg-review.svg);
+    background-position: center;
+    background-size: contain;
+    height: 700px;
+    background-repeat: no-repeat;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.section-testimonials .shape {
+    position: absolute;
+    width: 295px;
+    height: 600px;
+    opacity: 0.5;
+    bottom: -200px;
+    left: 0;
+    background: url(../../images/shap2.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.section-testimonials .testimonial-item-image svg {
+    width: 175px;
+}
+
+.section-testimonials .testimonial-item-content {
+    width: 50%;
+}
+
+.section-testimonials .testimonial-item {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tips-section {
+    margin: 75px 0;
+    display: inline-block;
+}
+
+.caroufredsel_wrapper {
+    display: flex !important;
+    text-align-last: center;
+}
+
 /* footer styles */
 #footer {
     padding-top: 14px;
@@ -6336,9 +6388,11 @@ span.btn:focus {
 
 .listing-post .frame {
     overflow: hidden;
-    border-radius: 5px;
+    position: relative;
+    border-radius: 30px;
+    padding-bottom: 40px;
     background: #ffffff;
-    border: #eaebec solid 1px;
+    box-shadow: 0px 0px 20px 0px #d3d3d359;
 }
 
 .listing-post .post-info {
@@ -6381,6 +6435,7 @@ span.btn:focus {
     bottom: 0;
     overflow: hidden;
     position: absolute;
+    background: #fff;
 }
 
 .listing-post .time-price {
@@ -6426,7 +6481,7 @@ span.btn:focus {
 
 .listing-post .area {
     overflow: hidden;
-    padding: 1px 21px 10px 10px;
+    padding: 0 10px;
 }
 
 .listing-post .title {
@@ -6442,7 +6497,6 @@ span.btn:focus {
 
 .listing-post .post-content {
     overflow: hidden;
-    padding: 16px 18px;
 }
 
 .listing-post .alignleft {
@@ -6453,13 +6507,22 @@ span.btn:focus {
 }
 
 .listing-post .textbox {
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 20px;
+}
+
+.listing-post .textbox .localisation {
+    font-size: 12px;
+    margin: -6px 0 5px;
+    color: #42a4f7;
 }
 
 .listing-post h2 {
-    margin: 0;
+    margin: 0 0 8px;
     color: #58595b;
-    font-size: 14px;
+    font-size: 20px;
     line-height: 20px;
 }
 
@@ -6592,7 +6655,7 @@ span.btn:focus {
 
 /* rating  */
 .rating {
-    margin: 0;
+    margin: 10px 5px;
     float: left;
     color: #dedddd;
 }
@@ -6600,7 +6663,7 @@ span.btn:focus {
 .rating li {
     padding: 0;
     color: #d9c26c;
-    font-size: 28px;
+    font-size: 15px;
     margin: 0 -10px 0 0;
 }
 

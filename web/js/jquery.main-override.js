@@ -19,7 +19,7 @@
               min: 1,
               max: 3,
             },
-            height: "variable",
+            height: 500,
           },
           prev: {
             button: ".slider-secondary-actions .slider-prev",
@@ -184,7 +184,7 @@
         height: "variable",
 
         pagination: {
-          container: ".testimonial-paging",
+          container: ".slider-testimonials-paging",
         },
         swipe: {
           onTouch: true,

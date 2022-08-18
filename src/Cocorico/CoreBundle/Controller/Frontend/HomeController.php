@@ -50,6 +50,7 @@ class HomeController extends Controller
      */
     public function rssTestimonialsAction()
     {
+
         $feed = $this->getParameter('cocorico.home_rss_testimonials');
         $cacheTime = 3600 * 12;
         $cacheDir = $this->getParameter('kernel.cache_dir');
@@ -65,39 +66,25 @@ class HomeController extends Controller
                     'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1',
                     'timeout' => 5,
                 ),
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                )
             );
 
-            $content = @file_get_contents($feed, false, stream_context_create($options));
-
-            $feeds = array();
-
-            try {
-                $feeds = new \SimpleXMLElement($content);
-                $feeds = $feeds->channel->xpath('//item');
-                var_dump($feed);
-                var_dump($content);
-            } catch (\Exception $e) {
-                // silently fail error
-                var_dump($e);
-            }
-
-            /**
-             * @var                    $key
-             * @var  \SimpleXMLElement $feed
-             */
-            foreach ($feeds as $key => $feed) {
-                $renderFeeds[$key]['title'] = (string)$feed->children()->name;
-                $renderFeeds[$key]['link'] = (string)$feed->children()->audio;
-                $renderFeeds[$key]['image'] = (string)$feed->children()->avatar;
-                $description = $feed->children()->lorem;
+            $data = file_get_contents($feed, false, stream_context_create($options));
+            $jsonData = json_decode($data, 1);
+            foreach ($jsonData as $key => $feed) {
+                $renderFeeds[$key]['name'] = (string)$feed['name'];
+                $renderFeeds[$key]['message'] = (string)$feed['message'];
+                $renderFeeds[$key]['avatar'] = (string)$feed['avatar'];
             }
 
             @file_put_contents($cacheFile, json_encode($renderFeeds));
         }
 
-
         return $this->render(
-            'CocoricoCoreBundle:Frontend/Home:rss_feed.html.twig',
+            'CocoricoCoreBundle:Frontend/Home:rss_testimonials.html.twig',
             array(
                 'feeds' => $renderFeeds,
             )
@@ -121,37 +108,27 @@ class HomeController extends Controller
             $renderFeeds = json_decode(@file_get_contents($cacheFile), true);
         } else {
             $options = array(
+                'http' => array(
+                    'user_agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1',
+                    'timeout' => 5,
+                ),
                 "ssl" => array(
                     "verify_peer" => false,
                     "verify_peer_name" => false,
-                ),
+                )
             );
-            $content = file_get_contents($feed, false, stream_context_create($options));
+ 
+            $data = file_get_contents($feed, false, stream_context_create($options));
+            $jsonData = json_decode($data, 1);
 
-            $feeds = array();
-            if ($content) {
-                try {
-                    $feeds = json_decode($content);
-                } catch (\Exception $e) {
-                    // silently fail error
-                }
-            }
-            var_dump($feeds);
-            /**
-             * @var                    $key
-             * @var  \SimpleXMLElement $feed
-             */
-            foreach ($feeds as $key => $feed) {
-                $renderFeeds[$key]['title'] = (string)$feed->children()->name;
-                $renderFeeds[$key]['link'] = (string)$feed->children()->audio;
-                $renderFeeds[$key]['image'] = (string)$feed->children()->avatar;
-                $description = $feed->children()->lorem;
+            foreach ($jsonData as $key => $feed) {
+                $renderFeeds[$key]['name'] = (string)$feed['name'];
+                $renderFeeds[$key]['message'] = (string)$feed['message'];
+                $renderFeeds[$key]['avatar'] = (string)$feed['avatar'];
             }
 
             @file_put_contents($cacheFile, json_encode($renderFeeds));
         }
-
-
         return $this->render(
             'CocoricoCoreBundle:Frontend/Home:rss_feed.html.twig',
             array(

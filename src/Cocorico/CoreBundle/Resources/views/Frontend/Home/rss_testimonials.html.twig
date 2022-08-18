@@ -1,40 +1,41 @@
 {% trans_default_domain 'cocorico_home' %}
 
 
-<section class="section section-feeds">
-	<div class="container">
+<div class="section section-testimonials ">
+	<div class="container content">
 		<header class="section-head">
 			<h2 class="section-title">
 				{{ 'home.feeds.section.header.title'|trans }}
 			</h2>
 		</header>
-		<pre>
-    {{ dump(feeds) }}
-</pre>
-		<div class="section-body" id="rss-feed">
-			<ul class="feed-items feed-items-hover">
+
+		<div class="testimonial-slider section-body" id="rss-testimonial">
+			<ul class="slides testimonial-items testimonial-items-hover">
 				{% for feed in feeds|slice(0, 4) %}
-					{% if feed.image is defined %}
-						{% set image = feed.image %}
+					{% if feed.avatar is defined %}
+						{% set image = feed.avatar %}
 					{% else %}
-						{% set image = asset('images/feed-default.png') %}
+						{% set image = asset('images/testimonial-default.png') %}
 					{% endif %}
-					<li class="feed-item">
-						<a href="{{ feed.link }}" target="_blank">
-							<div class="feed-item-image">
-								<img src="{{ image }}" alt=""/>
-							</div>
+					<li class="testimonial-item">
 
-							<div class="feed-item-content">
-								<h2>{{ feed.title }}</h2>
+						<div class="testimonial-item-image">
+							{% include 'CocoricoCoreBundle:Frontend/Home:assets/testimonial.svg.twig'%}
 
-								<p>{{ 'home.feeds.section.content.link'|trans }}
-									&gt;</p>
-							</div>
-						</a>
+							<!--<img src="{{ image }}" alt=""/>-->
+						</div>
+
+						<div class="testimonial-item-content">
+							<h2>{{ feed.name }}</h2>
+
+							<p>{{ feed.message }}</p>
+						</div>
+
 					</li>
 				{% endfor %}
 			</ul>
+			<div class="slider-testimonials-paging"></div>
 		</div>
 	</div>
-</section>
+	<div class="shape"></div>
+</div>
