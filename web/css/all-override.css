@@ -7,10 +7,18 @@
     cursor: pointer;
 }
 
-.listing-post .active,
-.tabset-holder .active .icon-heart {
+.listing-post svg path,
+.tabset-holder .icon-heart svg path {
+    fill: #ffffff00;
+    stroke: url(#linear-gradient);
+}
+
+.listing-post .active svg path,
+.tabset-holder .active .icon-heart svg path,
+.listing-post .icon-heart:hover svg path,
+.tabset-holder .icon-heart:hover svg path {
     text-decoration: none;
-    background: #c53f4e;
+    fill: #a51717;
 }
 
 .listing-area,
@@ -1353,7 +1361,7 @@ images css for making it 4:3
 .container .row .twocolumns .listing-area .listing-holder .listing-post .listing-box .frame .post-info .img-holder,
 .listing-area .listing-holder .listing-post .listing-box .frame .post-info .img-holder {
     width: 384px;
-    height: 288px;
+    height: 265px;
     position: relative;
 }
 

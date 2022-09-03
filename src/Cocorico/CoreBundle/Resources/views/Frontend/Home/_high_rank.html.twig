@@ -4,7 +4,7 @@
 			<h2 class="title">{{ 'home.high.rank.section.header'|trans({}, 'cocorico_listing') }}</h2>
 			<p class="subtitle">
 				Usu habeo equidem sanctus no. Suas summo id sed, erat erant oporteat cu pri. In eum omnes molestie.
-																																																																								Sed ad debet scaevola, ne mel.
+																																																																												Sed ad debet scaevola, ne mel.
 			</p>
 		</div>
 		<!-- post -->
@@ -22,7 +22,8 @@
 						<article class="listing-post col-sm-4 col-xs-12">
 							<div class="listing-content">
 								<a href="javascript:void(0)" id="favourite-{{ listing.id }}" class="favourit">
-									<i class="icon-heart"></i>
+									<i class="icon-heart">
+										{% include 'CocoricoCoreBundle:Frontend/Home:assets/heart.svg.twig'%}</i>
 									<span class="hidden">favourit</span>
 								</a>
 								<a href="{{ path('cocorico_listing_show', { 'slug': listing_translation.slug }) }}" class="listing-box">
@@ -36,40 +37,41 @@
 												<div
 													class="box-holder">
 													{# slider-clip 
-																																																																	                                                    <div class="head">
-																																																																															<div class="time-price">
-																																																																																<strong class="price">{{ price }}</strong>
-																																																																	
-																																																																																<p>
-																																																																																	{{ vatInclusionText(app.request.getLocale()) }}
-																																																																																	/
-																																																																																	{{ (0)|add_time_unit_text }}
-																																																																																</p>
-																																																																															</div>
-																																																																														</div>
-																																																																	                                                    #}
+																																																																														                                                    <div class="head">
+																																																																																												<div class="time-price">
+																																																																																													<strong class="price">{{ price }}</strong>
+																																																																														
+																																																																																													<p>
+																																																																																														{{ vatInclusionText(app.request.getLocale()) }}
+																																																																																														/
+																																																																																														{{ (0)|add_time_unit_text }}
+																																																																																													</p>
+																																																																																												</div>
+																																																																																											</div>
+																																																																														                                                    #}
 													<div class="foot">
-														<div class="area"><!-- rating -->
+														<div class="area">
+															<!-- rating -->
 															{#{% if listing.averageRating %}#}
 															{{ listing.averageRating | cocorico_star_rating }}
 																<span class="home-comment-counter"> ({{ listing.commentCount }}
 																)</span>
 															{#{% endif %}#}
 															{#
-																																																												                                                            {% if  listing.certified %}
-																																																																												<span class="certified">
-																																																																													<i class="icon-ok"></i>
-																																																																													{{ 'listing.search.result.certified'|trans({}, 'cocorico_listing') }}
-																																																																												</span>
-																																																																											{% endif %}
-																																																												                                                            #}
+																																																																											                                                            {% if  listing.certified %}
+																																																																																											<span class="certified">
+																																																																																												<i class="icon-ok"></i>
+																																																																																												{{ 'listing.search.result.certified'|trans({}, 'cocorico_listing') }}
+																																																																																											</span>
+																																																																																										{% endif %}
+																																																																											                                                            #}
 
 														</div>
 														{# <strong class="title list-comma">
-																																											{% for listingListingCategory in listing.listingListingCategories %}
-																																												<span>{{ listingListingCategory.category.translations[app.request.locale].name }}</span>
-																																											{% endfor %}
-																																										</strong> #}
+																																																									{% for listingListingCategory in listing.listingListingCategories %}
+																																																										<span>{{ listingListingCategory.category.translations[app.request.locale].name }}</span>
+																																																									{% endfor %}
+																																																								</strong> #}
 
 													</div>
 												</div>
@@ -93,7 +95,14 @@
                                                 } only %}
 											{% endif %}
 										</div>
+										
 									</div>
+
+								</a>
+								<a href="javascript:void(0)" class="btn-listing">
+									<i class="listing-action">
+										{% include 'CocoricoCoreBundle:Frontend/Home:assets/show.svg.twig'%}</i>
+									<span class="hidden">Preview</span>
 								</a>
 							</div>
 						</article>

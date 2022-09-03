@@ -27,11 +27,16 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Rubik';
     font-size: 14px;
     line-height: 1.428571429;
     color: #1A1A1A;
     background-color: #ffffff;
+}
+
+i {
+    font-family: 'fontello';
+    font-style: normal;
 }
 
 input,
@@ -128,9 +133,8 @@ h6,
 .h4,
 .h5,
 .h6 {
-    font-family: inherit;
-    font-weight: 700;
-    line-height: 1.1;
+    font-family: 'Poppins';
+    font-weight: 600;
     color: #58595b;
 }
 
@@ -4852,6 +4856,45 @@ input[type="button"].btn-block {
     font-style: normal;
 }
 
+/* latin */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/Poppins-Light.ttf')format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Poppins-Medium.ttf')format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/Poppins-Regular.ttf')format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/Poppins-ExtraBold.ttf')format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-display: swap;
+    src: url('../fonts/Rubik-VariableFont_wght.ttf')format("truetype");
+}
 
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
@@ -4863,30 +4906,7 @@ input[type="button"].btn-block {
   }
 }
 */
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
-    font-family: "fontello";
-    font-style: normal;
-    font-weight: normal;
-    display: inline-block;
-    text-decoration: inherit;
-    width: 1em;
-    margin-right: .2em;
-    text-align: center;
-    /* opacity: .8; */
-    /* For safety - reset parent styles, that can break glyph codes*/
-    font-variant: normal;
-    text-transform: none;
-    /* fix buttons height, for twitter bootstrap */
-    line-height: 1em;
-    /* Animation center compensation - margins should be symmetric */
-    /* remove if not needed */
-    margin-left: .2em;
-    /* you can be more comfortable with increased icons size */
-    /* font-size: 120%; */
-    /* Uncomment for 3D effect */
-    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-}
+
 
 .icon-down-open:before {
     content: '\e800';
@@ -4962,10 +4982,6 @@ input[type="button"].btn-block {
     content: '\e80e';
 }
 
-/* '' */
-.icon-heart:before {
-    content: '\e80f';
-}
 
 /* '' */
 .icon-star:before {
@@ -5383,6 +5399,8 @@ span.btn:focus {
 .navbar-default .navbar-nav>li>a {
     padding: 0;
     display: inline;
+    font-family: 'Poppins';
+    font-weight: 300;
     text-decoration: none;
 }
 
@@ -5612,10 +5630,10 @@ span.btn:focus {
 }
 
 .form-category .title label {
-    font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     color: #3D97B4;
+    font-family: 'Poppins';
 }
 
 .form-category .multiselect {
@@ -6011,6 +6029,15 @@ span.btn:focus {
     background-position-y: bottom;
 }
 
+.visual-listing {
+    margin: 0 0 -250px;
+    background: url(../../../images/banner.svg) no-repeat;
+    background-size: cover;
+    height: 400px;
+    background-position-x: center;
+    background-position-y: bottom;
+}
+
 .visual .shape-holder {
     position: relative;
 }
@@ -6077,6 +6104,7 @@ span.btn:focus {
     font-weight: 500;
     margin-bottom: 10px;
     color: #42a4f7;
+    font-family: 'Poppins';
 }
 
 .section-header .subtitle {
@@ -6435,7 +6463,27 @@ span.btn:focus {
     bottom: 0;
     overflow: hidden;
     position: absolute;
-    background: #fff;
+    background: url(../../../images/listing.svg);
+    background-position: top;
+    padding: 5px;
+    height: 45px;
+}
+
+.listing-action {
+    padding: 10px 25px;
+    display: block;
+    border-radius: 35px 0 35px 0;
+    background: #e7eef6;
+}
+
+.btn-listing {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.listing-action svg {
+    width: 25px;
 }
 
 .listing-post .time-price {
@@ -6461,17 +6509,10 @@ span.btn:focus {
     top: 0;
     right: 0;
     z-index: 2;
-    width: 46px;
-    height: 46px;
-    color: #e8e8e8;
+    width: 25px;
+    height: 25px;
     position: absolute;
-    text-align: center;
-    border-radius: 100%;
-    background: #797979;
-    margin: 20px 31px 0 0;
-    font-size: 26px;
-    line-height: 46px;
-    text-decoration: none;
+    margin: 20px 22px 0 0;
 }
 
 .listing-post .favourit:hover {
@@ -8866,17 +8907,14 @@ label {
     text-decoration: none;
 }
 
-.tabset-holder .link-favourit:hover .icon-heart {
-    background: #c53f4e;
-}
+
 
 .tabset-holder .link-favourit .icon-heart {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     color: #ffffff;
     margin: 0 0 0 7px;
     text-align: center;
-    background: #888a90;
     border-radius: 100%;
     font-size: 20px;
     line-height: 36px;
@@ -9693,19 +9731,20 @@ label {
 }
 
 /* listing-container */
-.listing-container {
+.listing-header {
     margin: -7px 0 0;
-    position: relative;
+    display: block;
+    height: 300px;
 }
 
-.listing-container h1 {
+.listing-header h1 {
     color: #58595b;
     margin: 0 0 33px;
     font-size: 30px;
     line-height: 1.2;
 }
 
-.listing-container h1 a,
+.listing-header h1 a,
 h1.listing-title a {
     font-size: 12px;
     text-decoration: none;

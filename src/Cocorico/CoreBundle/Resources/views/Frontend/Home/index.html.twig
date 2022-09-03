@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-xs-6 col-lg-6 ">
 					<div class="shape-holder">
-						
+
 						<div class="shape">
 							{% include 'CocoricoCoreBundle:Frontend/Home:assets/header-shape.svg.twig'%}
 						</div>
@@ -49,7 +49,7 @@
 						EN LIGNE !</h2>
 					<p class="subtitle">
 						Usu habeo equidem sanctus no. Suas summo id sed, erat erant oporteat cu pri. In eum omnes molestie.
-																																																Sed ad debet scaevola, ne mel.
+																																																												Sed ad debet scaevola, ne mel.
 					</p>
 				</div>
 
@@ -57,7 +57,7 @@
 					class="grid">
 					<!-- info-box -->
 					<div class=" info-box">
-						<img src="{{ asset('images/icon1.png') }}" alt="icon description" class="icon">
+						<img src="{{ asset('images/icon1.svg') }}" alt="icon description" class="icon">
 
 						<div class="textbox">
 							<h2>
@@ -71,7 +71,7 @@
 					</div>
 					<!-- info-box -->
 					<div class=" info-box">
-						<img src="{{ asset('images/icon2.png') }}" alt="icon description" class="icon">
+						<img src="{{ asset('images/icon2.svg') }}" alt="icon description" class="icon">
 
 						<div class="textbox">
 							<h2>
@@ -85,7 +85,7 @@
 					</div>
 					<!-- info-box -->
 					<div class=" info-box">
-						<img src="{{ asset('images/icon3.png') }}" alt="icon description" class="icon">
+						<img src="{{ asset('images/icon3.svg') }}" alt="icon description" class="icon">
 
 						<div class="textbox">
 							<h2>
@@ -111,7 +111,7 @@
             'listings': listings
             } only %}
 
-			{{ render(controller('CocoricoCoreBundle:Frontend/Home:rssFeeds')) }}
+			{#{{ render(controller('CocoricoCoreBundle:Frontend/Home:rssFeeds')) }}#}
 		</div>
 	</div>
 {% endblock %}
